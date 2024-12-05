@@ -17,10 +17,12 @@ public class Question35 {
             }
         });
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             new Thread(a, "Thread " + (i + 1)).start();
 
         }
+
+        System.out.println(cont);
 
     }
 
@@ -28,6 +30,5 @@ public class Question35 {
         sem.acquire();
         cont++;
         sem.release();
-        System.out.print(cont);
     }
 }
