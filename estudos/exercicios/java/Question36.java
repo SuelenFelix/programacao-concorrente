@@ -1,4 +1,4 @@
-package estudos.java;
+package estudos.exercicios.java;
 
 import java.util.concurrent.Semaphore;
 

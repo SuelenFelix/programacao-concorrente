@@ -1,10 +1,10 @@
-package estudos.java;
+package estudos.exercicios.java;
 
 import java.util.concurrent.Semaphore;
 
-public class Question34 {
-    static int cont = 0;
-    static Semaphore sem = new Semaphore(1);
+public class Question33 {
+    static Semaphore sem = new Semaphore(0);
+    static Semaphore sem2 = new Semaphore(0);
 
     public static void main(String[] args) {
         Runnable a = (() -> {
@@ -32,24 +32,24 @@ public class Question34 {
         try {
             threadA.join();
             threadB.join();
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-
-        System.out.println(cont);
-
     }
 
     public static void threadA() throws InterruptedException {
-        sem.acquire();
-        cont++;
+        System.out.println("a1");
         sem.release();
 
+        sem2.acquire();
+        System.out.println("a2");
     }
 
     public static void threadB() throws InterruptedException {
+        sem2.release();
+        System.out.println("b1");
+
         sem.acquire();
-        cont++;
-        sem.release();
+        System.out.println("b2");
     }
 }
