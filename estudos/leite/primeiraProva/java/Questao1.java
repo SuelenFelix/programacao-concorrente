@@ -4,6 +4,11 @@ import java.util.concurrent.Semaphore;
 
 public class Questao1 {
 
+    int contEx = 0;
+    int contIn = 0;
+    int waiting = 0;
+    int leave = 0;
+
     static Semaphore se = new Semaphore(4);
     static Semaphore si = new Semaphore(0);
     static Semaphore mutex = new Semaphore(1);

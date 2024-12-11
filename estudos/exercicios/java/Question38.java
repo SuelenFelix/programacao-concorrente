@@ -20,6 +20,8 @@ public class Question38 {
             seg.release();
         } else {
             contL++;
+            System.out.println("lid criado");
+
             mutex.release();
             lid.acquire();
         }
@@ -35,6 +37,7 @@ public class Question38 {
             lid.release();
         } else {
             contS++;
+            System.out.println("seguidor criado");
             mutex.release();
             seg.acquire();
         }
@@ -46,7 +49,7 @@ public class Question38 {
         for (int i = 0; i < 2; i++) {
             new Thread(() -> {
                 try {
-                    lideres();
+                    seguidores();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
@@ -56,7 +59,7 @@ public class Question38 {
         for (int i = 0; i < 2; i++) {
             new Thread(() -> {
                 try {
-                    seguidores();
+                    lideres();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
