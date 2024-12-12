@@ -4,11 +4,6 @@ import java.util.concurrent.Semaphore;
 
 public class Questao1 {
 
-    int contEx = 0;
-    int contIn = 0;
-    int waiting = 0;
-    int leave = 0;
-
     static Semaphore se = new Semaphore(4);
     static Semaphore si = new Semaphore(0);
     static Semaphore mutex = new Semaphore(1);
@@ -37,20 +32,20 @@ public class Questao1 {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 1; i++) {
             new Thread(() -> {
                 try {
-                    external();
+                    interno();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
             }).start();
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             new Thread(() -> {
                 try {
-                    interno();
+                    external();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
